@@ -12,9 +12,13 @@ const sendQueue = async (msg) => {
         const nameQueue = 'q2';
         //4. create queue 
         await channel.assertQueue(nameQueue,{
-            durable:true, //true khi start lại queue khong mat message
+            durable:true, 
+            //true khi start lại queue khong mat message
+            // false: mất hàng đợi khi bị crash
         })
         //5. send to queue
+
+        // Buffer là gì? là một vận chuyển dữ liệu bằng byte và tốc độ siêu nhanh
         await channel.sendToQueue(nameQueue,Buffer.from(msg), {
             // expiration:'10000'
             persistent:true,
