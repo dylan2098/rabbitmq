@@ -17,7 +17,9 @@ const receiveVideo = async ({msg}) => {
         })
 
         //4. receive video
-        const {queue} = await channel.assertQueue('');
+        const {queue} = await channel.assertQueue('', {
+            exclusive: true // khi không đăng ký thì sẽ tự động xoá queue -> để tránh lãng phí hàng đợi
+        });
 
         console.log(`nameQueue:::${queue}`)
 
