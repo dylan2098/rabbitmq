@@ -21,7 +21,7 @@ const sendQueue = async (msg) => {
         // Buffer là gì? là một vận chuyển dữ liệu bằng byte và tốc độ siêu nhanh
         await channel.sendToQueue(nameQueue,Buffer.from(msg), {
             // expiration:'10000' // => time to live (TTL) nghĩa là message trong 10s không xử lý thì sẽ bị đóng
-            persistent:true,
+            persistent:true, // liên tục lưu vào cache
         })
 
         //6.close conn and channel
