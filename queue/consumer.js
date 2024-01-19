@@ -18,7 +18,8 @@ const receiveQueue = async () => {
         await channel.consume(nameQueue, msg => {
             console.log('Msg', msg.content.toString())
         },{
-            noAck:true // khi client nhận được sẽ trả về status true / false
+            noAck:true 
+            // khi client nhận được sẽ trả về status true / false (nghĩa là đánh dấu đã xử lý hay chưa)
         })
 
         //6.close conn and channel
